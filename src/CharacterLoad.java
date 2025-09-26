@@ -143,7 +143,16 @@ public class CharacterLoad {
         y += dy;
     }
 
+// new
+public int getX() { return x; }
+public int getY() { return y; }
+public int getWidth() { return width; }
+public int getHeight() { return height; }
 
+public void setPosition(int newX, int newY) {
+    this.x = newX;
+    this.y = newY;
+}
 
 
   

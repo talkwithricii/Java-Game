@@ -12,6 +12,9 @@ public class GamePanel extends JPanel implements Runnable {
       private KeyHandler keyHandler; 
       private Thread gameThread;  
 
+      private Collision collision; // new 
+
+
     public GamePanel() {
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.setBackground(Color.WHITE);         
@@ -29,6 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
         pixelPosition = new PixelPosition();
         this.addMouseListener(pixelPosition);  
 
+        collision = new Collision(); // new 
 
 
         
@@ -48,41 +52,56 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    public void update() {
-        int speed = 2;
-         boolean moving = false;
-         String direction = "";
+   public void update() {
+    int speed = 2;
+    boolean moving = false;
+    String direction = "";
 
+    int nextX = character.getX();
+    int nextY = character.getY();
 
-      
-        if (keyHandler.isUpPressed()) {
-        character.move(0, -speed);
+    if (keyHandler.isUpPressed()) {
+        nextY -= speed;
+        if (!collision.checkCollision(nextX, nextY, character.getWidth(), character.getHeight())) {
+            character.setPosition(nextX, nextY);
+        }
         moving = true;
         direction = "up";
     }
-   
-       if (keyHandler.isLeftPressed()) {
-        character.move(-speed, 0);
+
+    if (keyHandler.isLeftPressed()) {
+        nextX = character.getX() - speed;
+        nextY = character.getY();
+        if (!collision.checkCollision(nextX, nextY, character.getWidth(), character.getHeight())) {
+            character.setPosition(nextX, nextY);
+        }
         moving = true;
         direction = "left";
     }
-    
-      
+
     if (keyHandler.isRightPressed()) {
-        character.move(speed, 0);
+        nextX = character.getX() + speed;
+        nextY = character.getY();
+        if (!collision.checkCollision(nextX, nextY, character.getWidth(), character.getHeight())) {
+            character.setPosition(nextX, nextY);
+        }
         moving = true;
         direction = "right";
     }
 
-   
     if (keyHandler.isDownPressed()) {
-        character.move(0, speed);
+        nextX = character.getX();
+        nextY = character.getY() + speed;
+        if (!collision.checkCollision(nextX, nextY, character.getWidth(), character.getHeight())) {
+            character.setPosition(nextX, nextY);
+        }
         moving = true;
         direction = "down";
     }
 
     character.update(moving, direction);
-    }
+}
+
 
 
     @Override
