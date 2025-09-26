@@ -18,6 +18,6 @@
 8. Keep Updating
 *. git add .
 *. git commit -m "Describe your change"
-*. git commit -m "Describe your change" git push
+*. git push
 
 
