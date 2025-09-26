@@ -6,18 +6,18 @@
    - git config --global user.name "Your Name"
    - git config --global user.email "your.email@example.com"
 6. Your Commands
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/username/repo.git
-git push -u origin main
+1. git init
+2. git add .
+3. git commit -m "Initial commit"
+4. git branch -M main
+5. git remote add origin https://github.com/username/repo.git
+6. git push -u origin main
 
 7. Refresh github
 
 8. Keep Updating
-git add .
-git commit -m "Describe your change"
-git push
+1. git add .
+2. git commit -m "Describe your change"
+3. git push
 
 
