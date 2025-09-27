@@ -21,3 +21,13 @@
 *. git push
 
 
+============================== IF Error ==========================================
+Step 1: Fetch and merge : git pull origin main
+If there are no conflicts, it will merge automatically, and you can push with:
+git push origin main
+and then
+
+*. git add .
+*. git commit -m "new"
+*. git push
+
