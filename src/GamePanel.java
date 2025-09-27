@@ -12,7 +12,10 @@ public class GamePanel extends JPanel implements Runnable {
       private KeyHandler keyHandler; 
       private Thread gameThread;  
 
-      private Collision collision; // new 
+      private Collision collision;
+      
+      private Enemy enemy = new Enemy();
+      
 
 
     public GamePanel() {
@@ -32,8 +35,8 @@ public class GamePanel extends JPanel implements Runnable {
         pixelPosition = new PixelPosition();
         this.addMouseListener(pixelPosition);  
 
-        collision = new Collision(); // new 
-
+        collision = new Collision(); 
+        enemy = new Enemy();
 
         
     }
@@ -59,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     int nextX = character.getX();
     int nextY = character.getY();
+
 
     if (keyHandler.isUpPressed()) {
         nextY -= speed;
@@ -100,6 +104,10 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     character.update(moving, direction);
+
+    enemy.update();
+
+
 }
 
 
@@ -111,6 +119,9 @@ public class GamePanel extends JPanel implements Runnable {
      
         map1.draw(g, WIDTH, HEIGHT);
         character.draw(g); 
+
+        enemy.draw(g); // new 
+
 
     }
 }
